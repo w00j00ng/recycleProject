@@ -1,14 +1,14 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, redirect, url_for, request
 
 
 bp = Blueprint('main', __name__, url_prefix='/')
 
 
-@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/')
 def index():
-    if request.method == 'POST':
-        print("request: ", request.form)
-
-        return render_template('classifier.html')
-
     return render_template('index.html')
+
+
+@bp.route('/guide/', methods=['GET', 'POST'])
+def classifier():
+    return render_template('guide.html')
