@@ -3,4 +3,18 @@
 <div>
     <h3>쓰레기 사진을 올려주세요</h3>
 </div>
+<div>
+    <form method="post" enctype="multipart/form-data">
+      <div>
+        <label for="image_uploads">이미지를 업로드해주세요 (파일형식: PNG, JPG)</label>
+        <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+      </div>
+      <div class="preview">
+        <p>No files currently selected for upload</p>
+      </div>
+      <div>
+        <button>제출하기</button>
+      </div>
+    </form>
+</div>
 {% endblock %}
