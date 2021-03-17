@@ -18,4 +18,5 @@ def classifier():
     inputImage.save(fdir)
     data = clf(fdir)
     os.remove(fdir)
-    return render_template('guide.html', data=data)
+
+    return render_template('guide_' + data + '.html', data=data)
