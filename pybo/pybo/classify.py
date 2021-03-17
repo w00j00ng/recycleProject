@@ -4,7 +4,7 @@ import numpy as np
 from pybo.config import homedir
 
 def clf(fdir):
-    categori=['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
+    categori=['battery','cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash']
     np.set_printoptions(suppress=True)
 
     model = tensorflow.keras.models.load_model(homedir + '/static/keras_model.h5')
