@@ -1,8 +1,10 @@
 from flask import Flask
+from pybo import config
 
 
 def create_app():
     app = Flask(__name__)
+    app.config.from_object(config)
 
     from .views import main_views
 
