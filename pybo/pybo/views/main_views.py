@@ -21,6 +21,7 @@ def index():
         fdir = homedir + filename
         f.save(fdir)
         data = clf(fdir)
+        os.remove(fdir)
         return render_template('guide_' + data + '.html', data=data)
     return render_template('index.html', form=form)
 
