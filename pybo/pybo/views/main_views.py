@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from pybo.classify import clf
 from pybo.config import homedir
+from pybo.forms import UploadImageForm
 import os
 
 bp = Blueprint('main', __name__, url_prefix='/')
@@ -8,7 +9,8 @@ bp = Blueprint('main', __name__, url_prefix='/')
 
 @bp.route('/')
 def index():
-    return render_template('index.html')
+    form = UploadImageForm()
+    return render_template('index.html', form=form)
 
 
 @bp.route('/guide/', methods=['GET', 'POST'])
