@@ -4,10 +4,14 @@
     <h3>쓰레기 사진을 올려주세요</h3>
 </div>
 <div>
-    <form method="post" action="{{ url_for('main.classifier') }}" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data">
       <div>
-        <label for="image_uploads">이미지를 업로드해주세요 (파일형식: PNG, JPG)</label>
-        <input type="file" id="image_uploads" name="file" accept=".jpg, .jpeg, .png" multiple>
+        <label>이미지를 업로드해주세요 (파일형식: PNG, JPG)</label>
+        {{ form.csrf_token }}
+
+        {{ form.photo.label }}
+
+        {{ form.photo(class='form-control', value="") }}
       </div>
       <div>
         <button type="submit">제출하기</button>
