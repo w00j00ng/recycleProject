@@ -18,22 +18,15 @@ def index():
         extension = os.path.splitext(filename)[1]
         if extension.lower() not in ('.jpg', '.jpeg', '.png'):
             return redirect(url_for('main.index'))
-        fdir = homedir + filename
+        fdir = homedir + '/static/' + filename
         f.save(fdir)
         data = clf(fdir)
         os.remove(fdir)
-        return render_template('guide_' + data + '.html', data=data)
+        return redirect(url_for('main.guide', data=data))
     return render_template('index.html', form=form)
 
 
-@bp.route('/guide/', methods=['GET', 'POST'])
-def classifier():
-    inputImage = request.files['file']
-    fdir = homedir + "/static/" + inputImage.filename
-    inputImage.save(fdir)
-    data = clf(fdir)
-    os.remove(fdir)
-
-    return render_template('guide_' + data + '.html', data=data)
-
+@bp.route('/guide/<string:data>', methods=['GET', 'POST'])
+def guide(data):
+    return render_template('guide.html', data=data)
 
