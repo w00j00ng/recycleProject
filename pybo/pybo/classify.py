@@ -19,6 +19,7 @@ def clf(fdir):
     image_array = np.asarray(image)
 
     normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+    normalized_image_array=normalized_image_array[:, :,:3]
 
     # Load the image into the array
     data[0] = normalized_image_array
