@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request
-
+from pybo.classify import myFunc
 
 bp = Blueprint('main', __name__, url_prefix='/')
 
@@ -11,4 +11,6 @@ def index():
 
 @bp.route('/guide/', methods=['GET', 'POST'])
 def classifier():
-    return render_template('guide.html')
+    inputImage = request.files['file']
+    inputImage.save("c:/users/yong/desktop/"+inputImage.filename)
+    return render_template('guide.html', data=inputImage)
