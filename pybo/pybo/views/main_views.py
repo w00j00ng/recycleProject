@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from pybo.classify import clf
 from pybo.config import homedir
 import os
@@ -15,6 +15,9 @@ def index():
     if form.validate_on_submit():
         f = form.photo.data
         filename = secure_filename(f.filename)
+        extension = os.path.splitext(filename)[1]
+        if extension.lower() not in ('.jpg', '.jpeg', '.png'):
+            return redirect(url_for('main.index'))
         fdir = homedir + filename
         f.save(fdir)
         data = clf(fdir)
