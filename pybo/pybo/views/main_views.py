@@ -4,6 +4,7 @@ from pybo.config import homedir
 import os
 from pybo.forms import PhotoForm
 from werkzeug.utils import secure_filename
+import json
 
 
 bp = Blueprint('main', __name__, url_prefix='/')
@@ -28,5 +29,7 @@ def index():
 
 @bp.route('/guide/<string:data>', methods=['GET', 'POST'])
 def guide(data):
-    return render_template('guide.html', data=data)
+    with open(homedir + '/static/guide/' + data + '.json', 'r', encoding="UTF-8") as f:
+        guide_json = json.load(f)
+    return render_template('guide.html', data=guide_json)
 
