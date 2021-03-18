@@ -28,6 +28,11 @@ def index():
     return render_template('index.html', form=form)
 
 
+@bp.route('/guide_all/')
+def guide_all():
+    return render_template('guide_all.html')
+
+
 @bp.route('/guide/<string:data>', methods=['GET', 'POST'])
 def guide(data):
     with open(homedir + '/static/guide/' + data + '.json', 'r', encoding="UTF-8") as f:
@@ -42,7 +47,12 @@ def region():
         keyword = request.form['keyword']
         if keyword not in regionList:
             guide_str = ["지역구를 다시 입력해주세요", ""]
-            return render_template('region.html', form=form, guide_str=guide_str)
+            return render_template('region.html', form=form, guide_str=guide_str, notvalid=True)
         guide_str = guideStr(keyword)
-        return render_template('region.html', form=form, guide_str=guide_str)
+        return render_template('region.html', form=form, guide_str=guide_str, valid=True)
     return render_template('region.html', form=form)
+
+
+@bp.route('/about/')
+def about():
+    return render_template('about.html')

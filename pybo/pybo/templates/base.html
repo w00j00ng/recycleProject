@@ -3,17 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewpont" content="width-device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="{{url_for('static', filename='magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='tooplate-style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
-
-    <title>Title</title>
+    <title>재활용쓰레기 이미지 분류</title>
 </head>
+<style>
+ header > img {
+       display : block;
+	   margin : 0px auto;
+	   width : 1300px;
+	   height : 650px;
+	   }
+
+ #menu ul li {
+	float: left;
+	list-style-type: none;
+	width:200px;
+	height:20px;
+    top: 0px;
+	text-align: center;
+	background-color: #f9f2ec;
+    }
+
+li a{
+       text-decoration:none;
+	   color : black;
+
+	  }
+	  /* 메뉴 만들기 End */
+
+ #menu {
+         height : 70px;
+		 top : 0px;
+		 width : 100%;
+		 background-color : #f9f2ec;
+         right : 0px;
+
+		 }  /*상위 메뉴 출력*/
+
+
+ h1 {
+      margin : 5px;
+      display : inline-block;
+		}
+section{
+         text-align: center;
+		 width : 900px;
+		 margin : auto;
+		 font-family:'HyhwpEQ';
+		 font-size: 20px;
+		 }
+footer {
+		 width : 900px;
+		 margin : auto;
+		 }
+body {
+    background-color : #F5E6E1;
+	}
+h3 {
+    color :#820052;
+	}
+
+</style>
 <body>
 <div>
-    <h1>1조: 쓰레기 분류 프로젝트</h1>
+    <h1>쓰레기 분리수거</h1>
+    <span>"자연과 가까울수록 병은 멀어지고, 자연과 멀수록 병은 가까워진다"
+	-괴테</span>
 </div>
+<nav>
+    <div id="menu">
+        <ul>
+           <li><a href="{{url_for('main.index')}}" target="_self"><h3>사진 전송하기</h3></a></li>
+           <li><a href="{{url_for('main.region')}}" target="_self"><h3>우리동네 배출일 안내</h3></a></li>
+            <li><a href="{{url_for('main.guide_all')}}" target="_self"><h3>배출방법 안내</h3></a></li>
+           <li><a href="{{url_for('main.about')}}"><h3>페이지 소개</h3></a></li>
+        </ul>
+    </div>
+</nav>
 {% block content %}
 {% endblock %}
 </body>

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<nav>
 <div>
     <h3>쓰레기 사진을 올려주세요</h3>
 </div>
@@ -18,7 +19,5 @@
       </div>
     </form>
 </div>
-<div>
-    <a href="{{ url_for('main.region') }}">우리 지역 쓰레기 배출일정 알아보기</a>
-</div>
+</nav>
 {% endblock %}
