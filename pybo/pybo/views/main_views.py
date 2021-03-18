@@ -41,7 +41,7 @@ def region():
     if request.method == 'POST' and request.form['keyword']:
         keyword = request.form['keyword']
         if keyword not in regionList:
-            guide_str = "지역구를 다시 입력해주세요"
+            guide_str = ["지역구를 다시 입력해주세요", ""]
             return render_template('region.html', form=form, guide_str=guide_str)
         guide_str = guideStr(keyword)
         return render_template('region.html', form=form, guide_str=guide_str)
