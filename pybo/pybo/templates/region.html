@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <form action="{{url_for('main.region')}}" method="post">
+        <label>지역구를 입력해주세요 (예: 강서구)</label>
+        <input name="keyword" type="text" title="지역구 입력" tabindex="1" autocomplete="off"  placeholder="입력해 주세요.">
+        <button type="submit">확인</button>
+    </form>
+</div>
+{% if guide_str %}
+<div>
+    <p>{{ keyword }} 지역 쓰레기 배출일정 정보</p>
+    <p>{{ guide_str[0] }}</p>
+    <p>{{ guide_str[1] }}</p>
+</div>
+{% endif %}
+<div>
+    <div>
+        <a href="{{ url_for('main.index') }}">돌아가기</a>
+    </div>
+</div>
+{% endblock %}
