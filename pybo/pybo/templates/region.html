@@ -1,18 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-<section>
-    <div class="container my-3">
-        <form action="{{url_for('main.region')}}" method="post">
-            <label>지역구를 입력해주세요 (예: 강서구)</label>
-            <input name="keyword" type="text" title="지역구 입력" tabindex="1" autocomplete="off"  placeholder="입력해 주세요.">
-            <button type="submit">확인</button>
-        </form>
+<style>
+        #test_btn1{
+            border-radius: 5px;
+            border-bottom-left-radius: 5px;
+            margin-right:-4px;
+            }
+        #btn_group button{
+        border: 1px solid skyblue;
+        background-color: rgba(0,0,0,0);
+        color: skyblue; padding: 5px; }
+
+        #btn_group button:hover{
+        color:white; background-color: skyblue;
+        }
+</style>
+<div class="container my-3">
+    <div id="btn_group">
+    <form action="{{url_for('main.region')}}" method="post">
+        <label>지역구를 입력해주세요 (예: 강서구)</label>
+        <input name="keyword" type="text" title="지역구 입력" tabindex="1" autocomplete="off"  placeholder="입력해 주세요.">
+        <button id="test_btn1">확인</button>
+    </form>
     </div>
-</section>
-<section>
+    </form>
+</div>
     {% if valid %}
         <div>
-            <p>{{ keyword }} 지역 쓰레기 배출일정 정보</p>
+            <h4>{{ keyword }} 지역 쓰레기 배출일정 정보</h4>
             <p>{{ guide_str[0] }}</p>
             <p>{{ guide_str[1] }}</p>
         </div>
@@ -24,20 +39,18 @@
             </p>
         </div>
     {% endif %}
-</section>
-<section>
-    <article>
-        <h3 id ="definition">지역 별 쓰레기 처리 일시, 장소 안내</h3>
-        생활쓰레기(폐기물)정보<br>
-        용어정의<br>
+<article>
+    <h3 id ="definition">지역 별 쓰레기 처리 일시, 장소 안내</h3>
+    <p>
+        <strong>생활쓰레기(폐기물)정보<br>용어정의</strong><br>
         가정쓰레기 : 일반주택 또는 공동주택에서 배출하는 생활폐기물중에서 연탄재,재활용가능 폐기물,대형폐기물을 제외한 생활폐기물<br>
         사업장쓰레기 : 인적·물적 설비를 갖추고 영리 또는 비영리 행위를 하는 사업장에서 배출되는 폐기물 중에서 연탄재,재활용가능폐기물,대형폐기물을 제외한 생활폐기물<br>
         대형폐기물 : 생활폐기물중에서 쓰레기봉투에 담기 어려운 폐기물<br>
         재활용가능폐기물 : 생활폐기물중에서 쓰레기봉투에 담지 아니하고 시장이 정하는 방법에 따라 분리 배출하여야 하는 폐기물<br>
-        공사장생활폐기물 : 생활폐기물중에서 일련의 공사·작업 등으로 인하여 발생되는 5톤 미만의 폐기물<br>
-    </article>
-<img src="{{url_for('static', filename='s.PNG')}}">
-</section>
+        공사장생활폐기물 : 생활폐기물중에서 일련의 공사·작업 등으로 인하여 발생되는 5톤 미만의 폐기물
+    </p>
+</article>
+<img src="{{url_for('static', filename='s.PNG' )}} ">
 <footer>
     <pre>
         <strong>내용 출처</strong>

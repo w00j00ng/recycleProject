@@ -2,21 +2,18 @@
 {% block content %}
 <div>
     <h3>분리수거 방법을 안내드립니다</h3>
-    <div>
-        {{ data.title }}
-    </div>
 </div>
 <div>
     {% for member in data.members %}
     <div>
-        <p>{{ member.name }}</p>
+        <h3 id="plastic">{{ member.name }}</h3>
         {% for i in member.content %}
             <p>{{ i }}</p>
         {% endfor %}
     </div>
     {% endfor %}
     <div>
-        <p>주의사항</p>
+        <h3>주의사항</h3>
         <p>{{ data.warnings }}</p>
     </div>
 </div>
