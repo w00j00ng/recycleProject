@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, session, g
 from pybo.classify import clf
 from pybo.config import homedir
 import os
@@ -6,6 +6,7 @@ from pybo.forms import PhotoForm, RegionForm
 from werkzeug.utils import secure_filename
 import json
 from pybo.schedule import regionList, guideStr
+from pybo.models import User
 
 
 bp = Blueprint('main', __name__, url_prefix='/')
@@ -50,7 +51,20 @@ def region():
             return render_template('region.html', form=form, guide_str=guide_str, notvalid=True)
         guide_str = guideStr(keyword)
         return render_template('region.html', form=form, guide_str=guide_str, valid=True)
-    return render_template('region.html', form=form)
+
+    address = session.get('address')
+    print("===================1=====================")
+    if address is None or address not in regionList:
+        print("===================2=====================")
+        print(address)
+        render_template('region.html', form=form)
+        return render_template('region.html', form=form)
+
+    print("===================3=====================")
+    print(address)
+    guide_str = guideStr(address)
+    print(guide_str)
+    return render_template('region.html', form=form, address=address, guide_str=guide_str, valid=True)
 
 
 @bp.route('/about/')

@@ -39,6 +39,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user.id
+            session['address'] = user.address
             return redirect(url_for('main.index'))
         flash(error)
     return render_template('login.html', form=form)
@@ -51,6 +52,7 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = User.query.get(user_id)
+        g.address = User.query
 
 
 @bp.route('/logout/')
