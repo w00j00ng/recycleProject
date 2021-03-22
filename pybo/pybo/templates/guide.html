@@ -4,11 +4,33 @@
     <h3>분리수거 방법을 안내드립니다</h3>
 </div>
 <div>
-    {% if user_id %}
-        <h3>제출하기</h3>
-    {% endif %}
+    <div>
+        <style>
+            #test_btn1{
+                border-radius: 5px;
+                border-bottom-left-radius: 5px;
+                margin-right:-4px;
+                }
+            #btn_group button{
+            border: 1px solid skyblue;
+            background-color: rgba(0,0,0,0);
+            color: skyblue; padding: 5px; }
 
-    {% for member in data.members %}
+            #btn_group button:hover{
+            color:white; background-color: skyblue;
+            }
+        </style>
+    </div>
+    {% if user_id %}
+        <form method="post" action="#">
+            <input type="hidden" name="user" value="{{user_id}}">
+            <input type="hidden" name="categori" value={{guide_json.title}}>
+            <div id="btn_group">
+                <button id="test_btn1">등록하기</button>
+            </div>
+        </form>
+    {% endif %}
+    {% for member in guide_json.members %}
     <div>
         <h3 id="plastic">{{ member.name }}</h3>
         {% for i in member.content %}
@@ -18,7 +40,7 @@
     {% endfor %}
     <div>
         <h3>주의사항</h3>
-        <p>{{ data.warnings }}</p>
+        <p>{{ guide_json.warnings }}</p>
     </div>
 </div>
 {% endblock %}

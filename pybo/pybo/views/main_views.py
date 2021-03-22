@@ -39,7 +39,7 @@ def guide(data):
     with open(homedir + '/static/guide/' + data + '.json', 'r', encoding="UTF-8") as f:
         guide_json = json.load(f)
     user_id = session.get('user_id')
-    return render_template('guide.html', data=guide_json,  user_id=user_id)
+    return render_template('guide.html', guide_json=guide_json,  user_id=user_id)
 
 
 @bp.route('/region/', methods=['GET', 'POST'])
