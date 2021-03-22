@@ -4,17 +4,36 @@
     <form method="post" class="post-form">
         {{ form.csrf_token }}
         {% include "form_errors.html" %}
-        <div class="form-group">
-            <label for="username">사용자 이름</label>
-            <input type="text" class="form-control" name="username" id="username"
-                   value="{{ form.username.data or '' }}">
-        </div>
-        <div class="form-group">
-            <label for="password">비밀번호</label>
-            <input type="password" class="form-control" name="password" id="password"
-                   value="{{ form.password.data or '' }}">
-        </div>
-        <button type="submit" class="btn btn-primary">로그인</button>
+        <table>
+            <tr>
+                <div class="form-group">
+                    <td>
+                        <label for="username">사용자 이름</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="username" id="username"
+                               value="{{ form.username.data or '' }}">
+                    </td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <td>
+                        <label for="password">비밀번호</label>
+                    </td>
+                    <td>
+                        <input type="password" class="form-control" name="password" id="password"
+                               value="{{ form.password.data or '' }}">
+                    </td>
+            </div>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" class="btn btn-primary">로그인</button>
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
 {% endblock %}

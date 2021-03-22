@@ -11,7 +11,7 @@ def guide_all():
     return render_template('guide_all.html')
 
 
-@bp.route('/guide/<string:data>', methods=['GET', 'POST'])
+@bp.route('/by_class/<string:data>/', methods=['GET', 'POST'])
 def guide(data):
     with open(homedir + '/static/guide/' + data + '.json', 'r', encoding="UTF-8") as f:
         guide_json = json.load(f)
