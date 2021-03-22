@@ -38,7 +38,8 @@ def guide_all():
 def guide(data):
     with open(homedir + '/static/guide/' + data + '.json', 'r', encoding="UTF-8") as f:
         guide_json = json.load(f)
-    return render_template('guide.html', data=guide_json)
+    user_id = session.get('user_id')
+    return render_template('guide.html', data=guide_json,  user_id=user_id)
 
 
 @bp.route('/region/', methods=['GET', 'POST'])
@@ -53,17 +54,10 @@ def region():
         return render_template('region.html', form=form, guide_str=guide_str, valid=True)
 
     address = session.get('address')
-    print("===================1=====================")
     if address is None or address not in regionList:
-        print("===================2=====================")
-        print(address)
         render_template('region.html', form=form)
         return render_template('region.html', form=form)
-
-    print("===================3=====================")
-    print(address)
     guide_str = guideStr(address)
-    print(guide_str)
     return render_template('region.html', form=form, address=address, guide_str=guide_str, valid=True)
 
 

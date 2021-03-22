@@ -4,6 +4,10 @@
     <h3>분리수거 방법을 안내드립니다</h3>
 </div>
 <div>
+    {% if user_id %}
+        <h3>제출하기</h3>
+    {% endif %}
+
     {% for member in data.members %}
     <div>
         <h3 id="plastic">{{ member.name }}</h3>
