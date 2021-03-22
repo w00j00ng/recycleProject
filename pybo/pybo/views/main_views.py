@@ -49,9 +49,9 @@ def region():
         keyword = request.form['keyword']
         if keyword not in regionList:
             guide_str = ["지역구를 다시 입력해주세요", ""]
-            return render_template('region.html', form=form, guide_str=guide_str, notvalid=True)
+            return render_template('region.html', form=form, keyword=keyword, guide_str=guide_str, notvalid=True)
         guide_str = guideStr(keyword)
-        return render_template('region.html', form=form, guide_str=guide_str, valid=True)
+        return render_template('region.html', form=form, keyword=keyword, guide_str=guide_str, valid=True)
 
     address = session.get('address')
     if address is None or address not in regionList:
