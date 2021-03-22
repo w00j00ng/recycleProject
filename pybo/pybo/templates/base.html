@@ -73,8 +73,8 @@ h3 {
     <div id="menu">
         <ul>
             <li><a href="{{url_for('main.index')}}" target="_self"><h3>사진 전송하기</h3></a></li>
-            <li><a href="{{url_for('main.region')}}" target="_self"><h3>우리동네 배출일 안내</h3></a></li>
-            <li><a href="{{url_for('main.guide_all')}}" target="_self"><h3>배출방법 안내</h3></a></li>
+            <li><a href="{{url_for('region.index')}}" target="_self"><h3>우리동네 배출일 안내</h3></a></li>
+            <li><a href="{{url_for('guide.guide_all')}}" target="_self"><h3>배출방법 안내</h3></a></li>
             <li><a href="{{url_for('main.about')}}"><h3>페이지 소개</h3></a></li>
             {% if g.user %}
             <li><a class="nav-link" href="{{url_for('auth.logout')}}"><h3>로그아웃</h3></a></li>

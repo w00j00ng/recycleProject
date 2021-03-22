@@ -17,7 +17,7 @@
 </style>
 <div class="container my-3">
     <div id="btn_group">
-    <form action="{{url_for('main.region')}}" method="post">
+    <form action="{{url_for('region.index')}}" method="post">
         <label>지역구를 입력해주세요 (예: 강서구)</label>
         <input name="keyword" type="text" title="지역구 입력" tabindex="1" autocomplete="off"  placeholder="입력해 주세요.">
         <button id="test_btn1">확인</button>
@@ -27,7 +27,7 @@
 </div>
     {% if valid %}
         <div>
-            <h3>{{ keyword }} 쓰레기 배출일정 정보</h3>
+            <h3>{{ address }} 쓰레기 배출일정 정보</h3>
             <p>{{ guide_str[0] }}</p>
             <p>{{ guide_str[1] }}</p>
         </div>
