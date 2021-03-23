@@ -29,11 +29,12 @@ def create_app():
         migrate.init_app(app, db)
 
     from . import models
-    from .views import main_views, auth_views, region_views, guide_views
+    from .views import main_views, auth_views, region_views, guide_views, game_views
 
     app.register_blueprint(main_views.bp)
     app.register_blueprint(auth_views.bp)
     app.register_blueprint(region_views.bp)
     app.register_blueprint(guide_views.bp)
+    app.register_blueprint(game_views.bp)
 
     return app

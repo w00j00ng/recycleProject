@@ -3,13 +3,18 @@ from flask_wtf.file import FileField, FileRequired
 from wtforms import StringField
 from werkzeug.utils import secure_filename
 from wtforms.validators import DataRequired
-from wtforms import StringField, TextAreaField, PasswordField
+from wtforms import StringField, TextAreaField, PasswordField, SelectField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, Length, EqualTo, Email
 
 
 class PhotoForm(FlaskForm):
     photo = FileField(validators=[FileRequired()])
+
+
+class GameForm(FlaskForm):
+    photo = FileField(validators=[FileRequired()])
+    answer = SelectField('정답', choices=['배터리','상자류', '유리', '금속', '종이', '플라스틱', '일반쓰레기'])
 
 
 class RegionForm(FlaskForm):

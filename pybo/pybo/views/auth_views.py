@@ -6,7 +6,7 @@ from pybo import db
 from pybo.forms import UserCreateForm, UserLoginForm
 from pybo.models import User
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+bp = Blueprint('auth', __name__, url_prefix='/auth/')
 
 
 @bp.route('/signup/', methods=('GET', 'POST'))

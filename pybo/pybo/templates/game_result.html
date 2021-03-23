@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    {% if correct %}
+    <h3>{{ guide_json.title }} 정답입니다!</h3>
+    {% else %}
+    <h3>정답은 {{ guide_json.title }}입니다</h3>
+    {% endif %}
+</div>
+<div>
+    <div>
+        <style>
+            #test_btn1{
+                border-radius: 5px;
+                border-bottom-left-radius: 5px;
+                margin-right:-4px;
+                }
+            #btn_group button{
+            border: 1px solid skyblue;
+            background-color: rgba(0,0,0,0);
+            color: skyblue; padding: 5px; }
+
+            #btn_group button:hover{
+            color:white; background-color: skyblue;
+            }
+        </style>
+    </div>
+
+    {% for member in guide_json.members %}
+    <div>
+        <h3 id="plastic">{{ member.name }}</h3>
+        {% for i in member.content %}
+            <p>{{ i }}</p>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <div>
+        <h3>주의사항</h3>
+        <p>{{ guide_json.warnings }}</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav>
+    <div>
+        <h3>쓰레기 사진을 올려주세요</h3>
+    </div>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+
+                <table>
+                {{ form.csrf_token }}
+                <tr>
+                    <td>
+                        <label>이미지를 업로드해주세요 (파일형식: PNG, JPG)</label>
+                    </td>
+                    <td>
+                        {{ form.photo(class='form-control', value="") }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>정답을 선택해주세요</label>
+                    </td>
+                    <td>
+                        {{ form.answer }}
+                    </td>
+                </tr>
+                </table>
+            </div>
+            <div>
+                <style>
+                    #test_btn1{
+                        border-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                        margin-right:-4px;
+                        }
+                    #btn_group button{
+                    border: 1px solid skyblue;
+                    background-color: rgba(0,0,0,0);
+                    color: skyblue; padding: 5px; }
+
+                    #btn_group button:hover{
+                    color:white; background-color: skyblue;
+                    }
+                </style>
+            </div>
+            <div id="btn_group">
+               <button id="test_btn1">도전!</button>
+            </div>
+        </form>
+    </div>
+</nav>
+{% endblock %}
