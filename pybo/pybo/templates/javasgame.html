@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>JavaScript Quiz - Pull-down menus 분리수거</title>
+
+<!-- 여기서부터 head ... /head 사이에 넣어줍니다-->
+<script language="JavaScript">
+
+if (window.focus) self.focus(); 
+
+//총 문제수를 설정합니다(예제는 5문제)
+var numQues = 5;
+
+//★아래에 각 문제의 정답을 순서대로 나열해 넣습니다
+var answers = new Array(numQues)
+answers[0] = "문제 1 번 정답";
+answers[1] = "문제 1 번 정답";
+answers[2] = "문제 1 번 정답";
+answers[3] = "문제 1 번 정답";
+answers[4] = "문제 1 번 정답";
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+
+  for (i=0; i<numQues; i++) {
+    currElt = form.elements[i];
+    currSelection = currElt.selectedIndex;
+    if (currElt.options[currSelection].value == answers[i]) {
+      score++;
+    }
+  }
+ //**스코어 계산(문항수에 따라 계산식을 수정하세요(하단 가이드 참조) **//
+  score = Math.round(score*2*10);
+  form.yourscore.value = score +"점";
+
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i +  answers[i-1] + "\r\n";
+  }
+  form.solutions.value = correctAnswers;
+}
+//-->
+</script>
+
+<!--여기까지 head 와 /head 사이에 넣어줍니다.-->
+</head>
+
+<body>
+
+<!-- 원하는 위치에 아래 예제와 같이 문항을 만들어 넣습니다--->
+<table border=0 cellpadding=5 cellspacing=0>
+<tr><td colspan=2><br><br><br><font face="Arial, Helvetica" size=-1>
+<b>아래 문제를 풀어 수거 지식에 대해 얼마나 알고있는지 확인해봅시다 </b>
+</font><hr color=red></td></tr>
+
+<FORM name="quiz">
+<tr><td><font face="Arial, Helvetica" size=-1>
+<b>1.</b> 생수병을 분리 배출할 때는 상표라벨을 따로 떼지 않고 버려도 괜찮다.
+</font></td>
+<td><font face="Arial, Helvetica" size=-1>
+<SELECT name="q1">
+<OPTION value="">선택 하세요
+<OPTION value="O">O
+<OPTION value="X">X
+
+</SELECT>
+</font></td></tr>
+
+<tr><td><font face="Arial, Helvetica" size=-1>
+<b>2.</b> 다 먹은 컵라면 용기는 물에 씻어 스티로폼으로 배출한다.
+</font></td>
+<td><font face="Arial, Helvetica" size=-1>
+<SELECT name="q2">
+<OPTION value="">선택 하세요
+<OPTION value="O">O
+<OPTION value="X">X
+
+</SELECT>
+</font></td></tr>
+
+<tr><td><font face="Arial, Helvetica" size=-1>
+<b>3.</b> 택배상자를 버릴 때는 테이프만 제거하고 운송장, 상표는 떼지 않아도 된다.
+</font></td>
+<td><font face="Arial, Helvetica" size=-1>
+<SELECT name="q3">
+<OPTION value="">선택 하세요
+<OPTION value="O">O
+<OPTION value="X">X
+
+
+</SELECT>
+</font></td></tr>
+
+<tr><td><font face="Arial, Helvetica" size=-1>
+<b>4.</b> 택배상자를 버릴 때는 반드시 접어서 배출해야 한다.
+</font></td>
+<td><font face="Arial, Helvetica" size=-1>
+<SELECT name="q4">
+<OPTION value="">선택 하세요
+<OPTION value="O">O
+<OPTION value="X">X
+    
+</SELECT>
+</font></td></tr>
+
+<tr><td><font face="Arial, Helvetica" size=-1>
+<b>5.</b> 비닐은 깨끗이 씻어 투명 비닐봉투에 담아 분리 배출한다.
+</font></td>
+<td><font face="Arial, Helvetica" size=-1>
+<SELECT name="q5">
+<OPTION value="">선택 하세요
+<OPTION value="O">O
+<OPTION value="X">X
+    
+</SELECT>
+</font></td></tr>
+<tr><td colspan=2><font face="Arial, Helvetica" size=-1>
+<b><INPUT TYPE="button" value="내 점수" onClick="getScore(this.form)">
+<INPUT TYPE="reset" value="다시시작"></b>
+<p>
+
+<b>당신의 득점율은 ▶ =</b> <INPUT TYPE=text SIZE=15 name="yourscore"><br>
+<b>퀴즈정답 :</b><br>
+<TEXTAREA name="solutions" WRAP="virtual" ROWS="4" COLS="40"></TEXTAREA>
+</td></tr>
+</table>
+</FORM>
+
+<!-- 여기까지 --->
+
+</body>
+</html>
